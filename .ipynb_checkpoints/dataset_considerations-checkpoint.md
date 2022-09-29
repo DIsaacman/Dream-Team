@@ -18,3 +18,25 @@ The balanced accuracy score was 0.6767254220456802 , which is very low.
 The classification report also showed some disappointing numbers. Presicion for predicting quality loans was 36%, which is much too low to be of any use.
 
 ![](Images/regression_model_report.JPG)
+
+
+### Second Model: Balanced Random Forest
+
+The second model ran prduced better results than the first.
+
+The balanced accuracy score was 0.7595678653679563. This is still not great, but is an improvement.
+
+The classification report showed an imporvement in precision for both 0 and 1 targets. Recall was also improved.
+
+![](Images/balanced_random_forest_report.JPG)
+
+
+### Third Model: K-Nearest Neighbors (KNN)
+
+The third model, although better than the first, showed a slight loss of precision from the second model.
+
+The third model resulted in an accuracy report similar to the second model at 0.7560599383987882.
+
+The classification report showed a slight reduction in precision and recall scores from the second model.
+
+![](Images/knn_model_report.JPG)
