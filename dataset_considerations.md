@@ -40,3 +40,26 @@ The third model resulted in an accuracy report similar to the second model at 0.
 The classification report showed a slight reduction in precision and recall scores from the second model.
 
 ![](Images/knn_model_report.JPG)
+
+
+### Fourth Model: Support Vector Machines (SVM)
+
+The fourth model outperformed all previous models in terms of precision.
+
+The fourth model resulted in an accuracy report of 0.7807512889761846.
+
+However, the classification report showed 0.0 precision and 0.0 recall for value '1'.
+
+
+![](Images/svm_report.JPG)
+
+
+### Fifth Model: Adaboost Model (Base Estimator = DecisionTreeClassifier)
+
+The fifth model was the best performing model.
+
+This model resulted in an accuracy report of 0.8397170494891675.
+
+The classification report shows 84% precision for both 0 and 1 values. Recall for 0 values was high at 98%, but quite low at 35% for 1.
+
+![](Images/adaboost_report.JPG)
