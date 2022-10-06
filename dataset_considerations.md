@@ -2,16 +2,17 @@
 
 It becomes clear that when trying to produce a model that will be used in a real world situation, the dataset needs to be reliable, consistent, and real. This is difficult when dealing with a financial use case as acquiring such sensitive data is quite difficult.
 
-Initially there was a desire to take feature columns from various dataframes and concat them into one datatframe that we would then use. This raises the issue of inconsistencies between dataframe features and resulting in a final dataframe that has feature values that do not align. In other words, a row that has features that did not actually exist in the real world (no user presented with those particular combination of feature values) and therefore skewed and unrealistic data.
+Initially there was a desire to take feature columns from various dataframes and concat them into one datatframe that we would then use. This raises the issue of inconsistencies between dataframe features resulting in a final dataframe that has feature values that do not align. In other words, a row that has features that did not actually exist in the real world (no user presented with those particular combination of feature values) and therefore skewed and unrealistic data.
 
 To then run a machine learning model on this dataframe and expect this model to predict a real world case is naive.
 
 Ultimately, as has become clear through this course, quality of data is paramount.
 
+## Finding The Best Model
 
 ### First Model: Linear Regression
 
-The first model run ont he dataset did not produce outstanding results.
+The first model run on the dataset did not produce outstanding results.
 
 The balanced accuracy score was 0.6767254220456802 , which is very low.
 
@@ -63,3 +64,9 @@ This model resulted in an accuracy report of 0.8397170494891675.
 The classification report shows 84% precision for both 0 and 1 values. Recall for 0 values was high at 98%, but quite low at 35% for 1.
 
 ![](Images/adaboost_report.JPG)
+
+## Saving the Machine Learning Model
+
+After running tests on multiple machine learning models it was clear that Adaboost had the best results.
+
+In order to make this model available to new data we needed to save the model for later loading. We achieved this using the 'pickle' library. We used pickle to serialize our model and then later to deserialize the model to make new predictions on user generated data. 
