@@ -1,3 +1,34 @@
+```
+
+# Testing
+
+{
+  "messageVersion": "1.0",
+  "invocationSource": "DialogCodeHook",
+  "userId": "John",
+  "sessionAttributes": {},
+  "bot": {
+    "name": "getLoan",
+    "alias": "$LATEST",
+    "version": "$LATEST"
+  },
+  "outputDialogMode": "Text",
+  "currentIntent": {
+    "name": "getLoan",
+    "slots": {
+      "person_income": "100000",
+      "person_age": "21",
+      "loan_amount": "10000",
+      "person_home_ownership": "own"
+    },
+    "confirmationStatus": "None"
+  }
+}
+
+```
+
+
+#Lambda code
 
 
 ### Required Libraries ###
@@ -7,7 +38,7 @@ from botocore.vendored import requests
 import pickle
 import boto3
 import logging
-logging.getLogger().setLevel(logging.INFO)
+# logging.getLogger().setLevel(logging.INFO)
 
 
 
@@ -119,7 +150,11 @@ def run_ml(intent_request):
     person_income = get_slots(intent_request)["person_income"]
     loan_amount = get_slots(intent_request)["loan_amount"]
 
-
+    person_age = int(person_age)
+    person_income = int(person_income)
+    loan_amount = int(loan_amount)
+    
+    
     # Gets the invocation source, for Lex dialogs "DialogCodeHook" is expected.
     source = intent_request["invocationSource"]
 
@@ -130,7 +165,7 @@ def run_ml(intent_request):
         slots = get_slots(intent_request)
 
         # Validates user's input using the validate_data function
-        validation_result = validate_data(dollars, intent_request)
+        validation_result = validate_data(loan_amount, intent_request)
 
         # If the data provided by the user is not valid,
         # the elicitSlot dialog action is used to re-prompt for the first violation detected.
@@ -192,11 +227,19 @@ def run_ml(intent_request):
         loan_amount]
         
         
-    s3 = boto3.resource('s3')
-    my_pickle = pickle.loads(s3.Bucket("ml-models-dream-team").Object("AdaBoost_model_1.sav").get()['Body'].read())
-    result = my_pickle.predict(X_test_scaled)
-    logging.warn(result)
+    # s3 = boto3.resource('s3')
+    # my_pickle = pickle.loads(s3.Bucket("ml-models-dream-team").Object("AdaBoost_model_1.sav").get()['Body'].read())
+    # prediction = my_pickle.predict(X_test_scaled)
+    # # logging.warn(result)
 
+
+    with open('AdaBoost_model_1.sav', 'wb') as data:
+        s3.Bucket("ml-models-dream-team").download_fileobj("AdaBoost_model_1.sav", data)
+    
+    with open('AdaBoost_model_1.sav') as data:
+        old_list = pickle.load(data, 'rb')
+    
+    
 
     # Return a message with conversion's result.
     return close(
@@ -206,7 +249,7 @@ def run_ml(intent_request):
             "contentType": "PlainText",
             "content": """Thank you. As of {}, .
             .
-            """.format(result
+            """.format(X_test_scaled
             ),
         },
     )
