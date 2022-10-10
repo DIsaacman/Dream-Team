@@ -141,8 +141,15 @@ To make this model available to new data, we needed to save the model for later 
 
 ---
 
-# AWS Lex Data Source - [Currency Rate Rate API](https://github.com/fawazahmed0/currency-api#readme)
+# AWS Bot
 
+## Lex Currency - Intent 1
+
+1. Currency Converter
+
+Users initiate conversation and answer the bot's questions. The answers will be fed into corresponding slots that, through API, will retrieve the daily exchange rates based on currency pairs defined by end users. 
+
+### Data Source - [Currency Rate Rate API](https://github.com/fawazahmed0/currency-api#readme)
 
 Get the currency value (for example, AUD/USD):
 
@@ -155,23 +162,21 @@ Import **requests** and **json** libraries to extract latest `date` and `rate`  
 
 ---
 
-# Lex-powered robot
-
-
-### Create two intents
-
-1. Currency Converter
-
-Users initiate conversation and answer the bot's questions. The answers will be fed into corresponding slots that, through API, will retrieve the daily exchange rates based on currency pairs defined by end users. 
-
-![currency_convert](Images/currency_converter_lex.gif)
+## Lex Loan - Intent 2
 
 2. Money Lending Service
 
-Once currency enquiry is completed, users will be directed to the Money Lending Service intent. Users will be asked four questions with the same 'features set' as `X_train` as our preferred Machine Learning Models used. The saved model loaded by the 'pickle' library from the previous step will `predict` the new ***`X` array***. Our preferred ML model will determine `1` or `0`, representing "High" or "Low" risk. 
+Once currency enquiry is completed, users will be directed to the Money Lending Service intent. 
 
+Users will be asked four questions with the same 'features set' as `X_train` as our preferred Machine Learning Models used. The saved model loaded by the 'pickle' library from the previous step will `predict` the new ***`X` array***. Our preferred ML model will determine `1` or `0`, representing "High" or "Low" risk. 
 
+![currency_convert](Images/currency_converter_lex.gif)
+
+Significant testing and troubleshooting was unsuccesful when integrating the Loan feature. A lack of time resulted in delgating the AWS Loan feature of the bot to future development.
+
+***Future development*** : user's `X` array has been successfully processed in the chatbot. Our preferred machine learning is also stored in the AWS S3 bucket. However, further code engineering is required for **loading** our saved model into AWS Lambda (please note: the loading model and prediction steps have been tested successfully in either Colab or Jupyter Lab)
+
+### Conceptual Bot
 ![money_lending](Images/money_lending_lex.gif)
 
-
-***Future development*** : user's `X` array has been successfully processed in the chatbot. Our preferred machine learning is also stored in the AWS S3 bucket. However, further code engineering is required for **loading** our saved model into AWS Lambda (please note: the loading model and prediction steps have been tested successfully in either Colab or Jupyter Lab )
+# User interface (UX)
