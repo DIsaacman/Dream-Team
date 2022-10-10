@@ -48,7 +48,7 @@ The balanced accuracy score was 0.5.
 
 Precision and recall for target value '1' produce 0 scores.
 
-![logistic](./Images/logistic_regression_model_original.JPG)
+![](Images/logistic_regression_model_original.jpg)
 
 
 When the logistic regression model was run on the resampled data the results were much improved, however still unsatisfactory.
@@ -57,7 +57,7 @@ The balanced accuracy score was 0.6767254220456802.
 
 The classification report also showed some disappointing numbers. Presicion for predicting quality loans was 36%, which is much too low to be of any use.
 
-![bot](./Images/regression_model_report.JPG)
+![](Images/regression_model_report.jpg)
 
 
 ### Second Model: Balanced Random Forest
@@ -68,11 +68,11 @@ The balanced accuracy score was 0.7595678653679563. This is still not great, but
 
 The classification report showed an imporvement in precision for both 0 and 1 targets. Recall was also improved.
 
-![brf](./Images/balanced_random_forest_report.JPG)
+![](./Images/balanced_random_forest_report.jpg)
 
 When this model was reran using the oversampled data, the accuracy score, precision and recall all degraded.
 
-![brf_resampled](./Images/balanced_random_forest_resampled_report.JPG)
+![](./Images/balanced_random_forest_resampled_report.jpg)
 
 
 ### Third Model: K-Nearest Neighbors (KNN)
@@ -83,11 +83,11 @@ The third model resulted in an accuracy report similar to the second model at 0.
 
 The classification report showed a slight reduction in precision and recall scores from the second model.
 
-![knn](./Images/knn_model_report.JPG)
+![](./Images/knn_model_report.jpg)
 
 When the resampled data was applied to the model the balanced accuracy score was very poor at 0.21924871102381538. Precision and recall returned 0 scores for the '0' target value.
 
-![knn_resampled](./Images/knn_resampled_report.JPG)
+![](./Images/knn_resampled_report.jpg)
 
 
 
@@ -100,7 +100,7 @@ The fourth model resulted in an accuracy report of 0.7807512889761846.
 However, the classification report showed 0.0 precision and 0.0 recall for value '1'.
 
 
-![svm](./Images/svm_report.JPG)
+![](./Images/svm_report.jpg)
 
 When the resampled data was applied to the SVM model, it caused the '.fit()' function to hang and ultimately crash the notebook. No results were produced for the resampled data.
 
@@ -113,11 +113,11 @@ This model resulted in an accuracy report of 0.8397170494891675.
 
 The classification report shows 84% precision for both 0 and 1 values. Recall for 0 values was high at 98%, but quite low at 35% for 1.
 
-![adaboost](./Images/adaboost_report.JPG)
+![](./Images/adaboost_report.jpg)
 
 When the resampled data was applied to this model the results were very poor, with an accuracy score of 0.2871347900810214. Recall and precision were also degraded.
 
-![ada_resampled](./Images/ada_resampled_report.JPG)
+![](./Images/ada_resampled_report.jpg)
 
 
 ### Results
