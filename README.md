@@ -53,7 +53,7 @@ The classification report also showed some disappointing numbers. Presicion for 
 
 ### Second Model: Balanced Random Forest
 
-The second model ran prduced better results than the first.
+The second model ran produced better results than the first when run on the data without oversampling.
 
 The balanced accuracy score was 0.7595678653679563. This is still not great, but is an improvement.
 
@@ -61,10 +61,14 @@ The classification report showed an imporvement in precision for both 0 and 1 ta
 
 ![](Images/balanced_random_forest_report.JPG)
 
+When this model was reran using the oversampled data, the accuracy score, precision and recall all degraded.
+
+![](Images/balanced_random_forest_resampled_report.JPG)
+
 
 ### Third Model: K-Nearest Neighbors (KNN)
 
-The third model, although better than the first, showed a slight loss of precision from the second model.
+The third model, although better than the first, showed a slight loss of precision from the second model when run on the data without resampling.
 
 The third model resulted in an accuracy report similar to the second model at 0.7560599383987882.
 
@@ -72,10 +76,15 @@ The classification report showed a slight reduction in precision and recall scor
 
 ![](Images/knn_model_report.JPG)
 
+When the resampled data was applied to the model the balanced accuracy score was very poor at 0.21924871102381538. Precision and recall returned 0 scores for the '0' target value.
+
+![](Images/knn_resampled_report.JPG)
+
+
 
 ### Fourth Model: Support Vector Machines (SVM)
 
-The fourth model outperformed previous models in terms of precision.
+The fourth model outperformed previous models in terms of precision when run on the data without resampling.
 
 The fourth model resulted in an accuracy report of 0.7807512889761846.
 
@@ -84,16 +93,27 @@ However, the classification report showed 0.0 precision and 0.0 recall for value
 
 ![](Images/svm_report.JPG)
 
+When the resampled data was applied to the SVM model, it caused the '.fit()' function to hang and ultimately crash the notebook. No results were produced for the resampled data.
+
 
 ### Fifth Model: Adaboost Model (Base Estimator = DecisionTreeClassifier)
 
-The fifth model was the best performing model.
+The fifth model was the best performing model when run on the data without resampling.
 
 This model resulted in an accuracy report of 0.8397170494891675.
 
 The classification report shows 84% precision for both 0 and 1 values. Recall for 0 values was high at 98%, but quite low at 35% for 1.
 
 ![](Images/adaboost_report.JPG)
+
+When the resampled data was applied to this model the results were very poor, with an accuracy score of 0.2871347900810214. Recall and precision were also degraded.
+
+![](Images/ada_resampled_report.JPG)
+
+
+### Results
+
+We found it unusual that the resampled data performed poorly relatived to the original skewed data. Ultimately we decided to use the Adaboost model with the original data, simply split into training and testing sets and scaled, without resampling.
 
 ## Saving the Machine Learning Model
 
