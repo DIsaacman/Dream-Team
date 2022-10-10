@@ -42,9 +42,18 @@ While we do not see this service being useful as a money lender as it stands, we
 
 ### First Model: Linear Regression
 
-The first model run on the dataset did not produce outstanding results.
+Running the logistic regression model on the imbalanced data produced average results
 
-The balanced accuracy score was 0.6767254220456802 , which is very low.
+The balanced accuracy score was 0.5.
+
+Precision and recall for target value '1' produce 0 scores.
+
+![](Images/logistic_regression_model_original.JPG)
+
+
+When the logistic regression model was run on the resampled data the results were much improved, however still unsatisfactory.
+
+The balanced accuracy score was 0.6767254220456802.
 
 The classification report also showed some disappointing numbers. Presicion for predicting quality loans was 36%, which is much too low to be of any use.
 
