@@ -1,4 +1,6 @@
-![](Images/Dream_Team - Currency Conversion Chat Bot.jpg)
+![](Images/Dream_Team%20-%20Currency%20Conversion%20Chat%20Bot.jpg)
+
+
 # Digital Lender
 
 
@@ -44,6 +46,12 @@ For many reasons, this project, at least the money lending aspect, is unlikely t
 While we do not see this service as valuable as a money lender as it stands, we do see possibilities for something similar with the rise of online banking and decentralised loan services. The main weakness of our product is the unreliability of the data provided by the user. Solving this could be as simple as drawing from centralised services to provide rigorous credentials coupled with KYC (Know Your Customer). 
 
 Allowing for additional collateralisation would also make this service more realistic, however, with modifications. There is also the medium to long-term potential for digital identities tied to a user that could create a scenario where a user could verify themselves and provide credentials in a way that could be trusted, such as the conceptual [soulbound token](https://vitalik.eth.limo/general/2022/01/26/soulbound.html).
+
+# Dependencies 
+
+Please see the following dependencies below for the build using Python version 3.7
+
+![](/Images/dependencies.png)
 
 # Finding The Best Machine Learning Model
 
@@ -147,6 +155,8 @@ To make this model available to new data, we needed to save the model for later 
 
 1. Currency Converter
 
+![](Images/bot_currency.png)
+
 Users initiate conversation and answer the bot's questions. The answers will be fed into corresponding slots that, through API, will retrieve the daily exchange rates based on currency pairs defined by end users. 
 
 ### Data Source - [Currency Rate Rate API](https://github.com/fawazahmed0/currency-api#readme)
@@ -166,6 +176,8 @@ Import **requests** and **json** libraries to extract latest `date` and `rate`  
 
 2. Money Lending Service
 
+![](Images/bot_ml.png)
+
 Once currency enquiry is completed, users will be directed to the Money Lending Service intent. 
 
 Users will be asked four questions with the same 'features set' as `X_train` as our preferred Machine Learning Models used. The saved model loaded by the 'pickle' library from the previous step will `predict` the new ***`X` array***. Our preferred ML model will determine `1` or `0`, representing "High" or "Low" risk. 
@@ -174,9 +186,29 @@ Users will be asked four questions with the same 'features set' as `X_train` as 
 
 Significant testing and troubleshooting was unsuccesful when integrating the Loan feature. A lack of time resulted in delgating the AWS Loan feature of the bot to future development.
 
+![Lambda_error](Images/error_ml_pickle.png)
+
 ***Future development*** : user's `X` array has been successfully processed in the chatbot. Our preferred machine learning is also stored in the AWS S3 bucket. However, further code engineering is required for **loading** our saved model into AWS Lambda (please note: the loading model and prediction steps have been tested successfully in either Colab or Jupyter Lab)
 
-### Conceptual Bot
+## Conceptual Bot
+
+
 ![money_lending](Images/money_lending_lex.gif)
 
-# User interface (UX)
+# User Interface (UX)
+
+Anvil was our second choice after encountering significant drawbacks with Lambda, Lex and S3.
+
+Anvil provides an easy-to-use drag-and-drop interface to design and deploy simle UX on the web.
+
+Anvil has a buil in IDE and also has features that allow it to sync with Google Colab.
+
+Google Colab is used as the backend server to do the heavy lifting while anvil allows hosting and publishing to the web.
+
+The only drawback is that after 90 minutes of closing the Google Colab file, the Anvil app seems to lose connection. This is a know issue that we are working through.
+
+More information on Colab integration with Anvil can be found [here](https://anvil.works/learn/tutorials/google-colab-to-web-app)
+
+# Final Product
+
+![](Images/APP_Demo.gif)
