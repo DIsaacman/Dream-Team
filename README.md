@@ -12,7 +12,7 @@ Many travellers may need a small loan, and we offer them the ability to convert 
 
 We utilise machine learning to determine the user's creditworthiness and offer different rates and collateral requirements depending on the risk perception.
 
-These services are delivered using a simple User Interface hosted online [here] (https://moneygram-lend.anvil.app) .
+These services are delivered using a simple User Interface hosted online [here](https://moneygram-lend.anvil.app) .
 
 
 # The Data
