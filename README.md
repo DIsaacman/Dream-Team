@@ -1,4 +1,5 @@
-![](Images/Dream_Team%20-%20Currency%20Conversion%20Chat%20Bot.jpg)
+
+[![Cover](Images/Dream_Team%20-%20Currency%20Conversion%20Chat%20Bot.jpg)](https://www.canva.com/design/DAFNmX9KE-Y/yYGe_Q7QnePOeMhRQsjtoQ/view?utm_content=DAFNmX9KE-Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
 
 
 # Digital Lender
