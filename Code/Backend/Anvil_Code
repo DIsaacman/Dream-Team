@@ -1,0 +1,67 @@
+from ._anvil_designer import Form1Template
+from anvil import *
+import anvil.server
+import anvil.tables as tables
+import anvil.tables.query as q
+from anvil.tables import app_tables
+
+class Form1(Form1Template):
+  def __init__(self, **properties):
+    # Set Form properties and Data Bindings.
+    self.init_components(**properties)
+
+    # Any code you write here will run when the form opens.
+
+  def text_box_1_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass
+
+  def convert_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    # Call the google colab function and pass it the iris measurements
+    conversion = anvil.server.call("convert_currency",
+                                  float(self.dollar.text),
+                                  self.currency_buy.selected_value,
+                                  self.currency_sell.selected_value
+                                  )
+    self.rate.visible = True
+    self.rate.text = f"You can buy up to {conversion:,.2f} {self.currency_sell.selected_value}"
+    pass
+
+  def button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    
+    # Call the google colab function and pass it the loan data
+    loan_data = anvil.server.call('predict_loan', 
+                                self.home.selected_value,
+                                int(self.age.text),
+                                int(self.income.text),
+                                float(self.amount.text))
+#     # If a category is returned set our species 
+
+    #Make cell visible
+    self.quote.visible = True
+    
+    #Print to cell
+    self.quote.text = f"{loan_data} in {self.currency_buy.selected_value}"
+    
+    pass
+
+  def home_change(self, **event_args):
+    """This method is called when an item is selected"""
+    self.home.items = ['rent','buy','other','mortgage']
+    pass
+
+  def amount_pressed_enter(self, **event_args):
+    """This method is called when the user presses Enter in this text box"""
+    pass
+
+
+
+
+
+
+
+
+
+
