@@ -1,4 +1,4 @@
-![](Images/digital-loan.jpg)
+![](Images/Dream_Team - Currency Conversion Chat Bot.jpg)
 # Digital Lender
 
 
